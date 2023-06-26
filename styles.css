@@ -36,9 +36,13 @@ html {
     outline: none;
   }
 
+  button {
+    all: unset;
+  }
+
   /* Custom CSS */
 
-  body, main, .main-header, .user-header, .cards, .group, .profile-info {
+  body, main, .main-header, .user-header, .user-details, .cards, .group, .profile-info, .buttons, .card-container{
     display: grid;
   }
 
@@ -53,24 +57,38 @@ html {
     grid-template-columns: 3fr 1fr;
   }
 
+  .projects {
+    max-height: 100%;
+  }
+
   .main-header {
     grid-template-columns: 3fr 1fr;
     margin-bottom: 1rem;
   }
 
   .user-header {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .user-details {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "pic textSmall"
+      "pic textLarge";
+    justify-self: start;
+
   }
 
   .cards {
-    grid-template: 1fr 1fr 1fr / 2fr 1fr;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr;
   }
 
   .group {
     grid-template-rows: 1fr 1fr;
   }
 
-  .sidebar, header, .card-container{
+  .sidebar, header, .card-container, .card-container-02{
     background: rgba( 255, 255, 255, 0.2 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -78,13 +96,51 @@ html {
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     color: white;
-    padding: 1rem;
     margin: 0.5rem;
-    background-size: 100% 100%;
+  }
+
+  header {
+    margin-bottom: 2rem;
+    padding: 1rem;
+  }
+
+  .sidebar {
+    padding: 1rem;
+    max-height: 100%;
   }
 
   .card-container {
-    height: 10rem;
+    grid-template-columns: 1fr 10fr;
+    grid-template-areas: "side card"
+                        "side card"
+                        "side buttons";
+  }
+
+  .card-container div:first-child {
+    background-color: white;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    grid-area: side;
+  }
+
+  .card-text {
+    grid-area: card;
+    padding: 20px;
+  }
+
+  .card-text h3 {
+    margin-bottom: 1rem;
+  }
+
+  .card-btns {
+    grid-area: buttons;
+    display: flex;
+    justify-content: end;
+    margin: 1rem;
+  }
+
+  .card-btns>svg {
+    margin-left: 0.9rem;
   }
 
   h2{
@@ -174,4 +230,80 @@ html {
     font-weight: 700;
     font-size: 1.1rem;
     justify-self: start;
+  }
+
+  .user-details>img {
+    grid-area: pic;
+    height: 70px;
+    width: auto;
+    border-radius: 70px;
+  }
+
+  .user-details>p{
+    grid-area: textSmall;
+    align-self: end;
+  }
+
+  .user-details>h1{
+    grid-area:textLarge;
+    font-weight: 700;
+  }
+
+  .buttons {
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+  }
+  button {
+    height: 2.5rem;
+    width: 6rem;
+    background: #1D9FF2;
+    border-radius: 2rem;
+    text-align: center;
+    font-weight: 700;
+    margin-left: min(10px);
+  }
+
+  .card-container-02 {
+    padding: 1rem;
+    max-height: 265px;
+    overflow: scroll;
+  }
+
+  .card-container-02 p {
+    font-size: 0.8rem;
+  }
+
+  hr {
+    border: 1px solid white;
+    width: 90%;
+    opacity: 60%;
+    margin: 0.75rem 0 0.75rem 0;
+  }
+
+  h4, h2 {
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-group-profiles{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-group-profiles img{
+    height: 50px;
+    border-radius: 30px;
+  }
+  .trend-users {
+    display: flex;
+    margin-bottom: 0.75rem;
+    align-items: center;
+  }
+
+  .trend-text {
+    margin-left: 1rem;
+  }
+
+  .trend-text p {
+    margin-top: 0.3rem;
   }
