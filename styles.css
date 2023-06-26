@@ -28,9 +28,17 @@ html {
     height: auto;
   }
 
+  input, input:focus-visible {
+    border:none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+
   /* Custom CSS */
 
-  body, main, .main-header, .user-header, .cards, .group {
+  body, main, .main-header, .user-header, .cards, .group, .profile-info {
     display: grid;
   }
 
@@ -46,7 +54,8 @@ html {
   }
 
   .main-header {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
+    margin-bottom: 1rem;
   }
 
   .user-header {
@@ -117,4 +126,52 @@ html {
 
   a:hover {
     transform: scale(1.05);
+  }
+
+  .search>input {
+    width: 90%;
+    height: 1rem;
+    border-radius: 1rem;
+    margin-left: 0.75rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font: inherit;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-info {
+    grid-template-columns: 1fr 1fr 2fr;
+  }
+
+  .profile-info * {
+    place-self: center;
+  }
+
+  .profile-pic {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  .profile-pic > img {
+    position: absolute;
+    border-radius: 3rem;
+    height: 50px;
+    width: auto;
+    right: calc(50% - 25px);
+    bottom: calc(50% - 25px);
+  }
+
+  .profile-info>svg {
+    justify-self: end;
+    margin-right: 0.2rem;
+  }
+
+  .profile-info>p {
+    font-weight: 700;
+    font-size: 1.1rem;
+    justify-self: start;
   }
